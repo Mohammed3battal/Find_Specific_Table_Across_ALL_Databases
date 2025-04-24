@@ -1,0 +1,10 @@
+EXEC sp_MSforeachdb 
+N'
+USE [?];
+IF EXISTS (
+    SELECT * 
+    FROM INFORMATION_SCHEMA.TABLES 
+    WHERE TABLE_NAME = ''table1''
+)
+    PRINT ''Database: [?] contains the table: table1''
+';
